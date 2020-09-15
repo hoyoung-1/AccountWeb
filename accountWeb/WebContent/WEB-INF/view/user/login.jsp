@@ -9,6 +9,11 @@
 <link rel="stylesheet" href="/resouces/css/user/login.css"/>
 </head>
 <body>
+	<c:if test="${error }">
+		<script>
+			alert("아이디, 비밀번호가 틀렸습니다.");
+		</script>
+	</c:if>
 
 	<jsp:include page="/WEB-INF/view/header.jsp"/>
 	<c:if test="${flag }">
