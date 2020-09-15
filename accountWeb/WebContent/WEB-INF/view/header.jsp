@@ -16,15 +16,17 @@
 					<img class="logo-img" src="/resouces/img/logo.jpg" alt="이미지 없음" />
 				</a>
 			</div>
-			<c:if test="${empty login }">
+			<c:if test="${empty user }">
 				<div class="user-info">
 					<a href="/user/login">로그인 </a> | <a href="/user/add">회원가입</a>
 				</div>
 			</c:if>
-			<c:if test="${not empty login} }">
+			<c:if test="${not empty user }">
+			<form action="/home" method="post" onsubmit="logout()">
 				<div class="user-info">
-					<a href="/user/login">로그인 </a> | <a href="/user/add">회원가입</a>
+					${user.name }님  | <input type="submit" value="로그아웃"/>
 				</div>
+			</form>
 			</c:if>
 		</div>
 
@@ -36,5 +38,14 @@
 		</nav>
 
 	</header>
+	
+	<script>
+	
+	function logout() {
+		alert("로그아웃 되었습니다.");
+		
+	}
+	</script>
+
 </body>
 </html>

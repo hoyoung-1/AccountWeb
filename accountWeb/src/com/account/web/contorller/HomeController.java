@@ -20,4 +20,14 @@ public class HomeController extends HttpServlet {
 		dispatcher.forward(request, response);
 
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		
+		session.invalidate();
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/home.jsp");
+		dispatcher.forward(request, response);
+	}
 }
