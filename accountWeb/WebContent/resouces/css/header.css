@@ -1,18 +1,20 @@
 @charset "UTF-8";
-.content-container {
+
+.header-container {
 	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	width: 100%;
-}
-.header {
 	justify-content: center;
 	flex-direction: row;
 }
 
-.logo-img {
-	width: 100%;	
+.logo-block {
+	margin: auto;
+	text-align: center;
 }
+
+.logo-img {
+	width: 50%;
+}
+
 
 .user-info {
 	position: absolute;
@@ -20,8 +22,7 @@
 	padding: 10px;
 }
 
-
-.nav-list{
+.nav-list {
 	text-align: center;
 	border-top: 1px solid green;
 	border-bottom: 1px solid green;

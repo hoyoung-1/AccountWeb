@@ -16,7 +16,7 @@
 
 		<div class="login-container">
 			<div class="login-title">로그인</div>
-			<form action="login" method="post">
+			<form action="/user/login" method="post">
 				<div class="login-input-block">
 					<label>id</label><input type="text" name="id" />
 				</div>

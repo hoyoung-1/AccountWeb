@@ -7,59 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>-- Account Web --</title>
-<style>
-.content-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	width: 100%;
-}
-
-main { 
-	width: 80%;
-	margin: auto;
-}
-.main-block {
-	margin: 40px 0;
-}
-
-.description-block {
-	border: 1px solid green;
-	display : flex;
-	flex-direction: row;
-}
-
-.description-title {
-	font-size: 30px;
-	padding: 20px 0;
-}
-
-.description-img {
-	border: 1px solid;
-	width: 300px;
-	height: 300px;
-}
-
-.main-list-block {
-	display : flex;
-	flex-direction: row;
-	justify-content: space-around;
-}
-
-.board-block {
-	display:flex;
-	flex-direction: column;
-}
-
-.board-title {
-	padding: 10px;
-	font-size: 20px solid;
-}
-
-
-
-
-</style>
+<link rel="stylesheet" href="/resouces/css/home.css" />
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/header.jsp"/>	
