@@ -18,8 +18,8 @@
 				<div class="add-block">
 				
 					<div class="input-block"><label>ID</label> <input type="text" name="addID" /> </div>
-					<div class="input-block"><label>PW</label> <input type="text" name="addPW" /></div> 
-					<div class="input-block"><label>CHECK</label> <input type="text" /> </div>
+					<div class="input-block"><label>PW</label> <input type="password" name="addPW" /></div> 
+					<div class="input-block"><label>CHECK</label> <input type="password" /> </div>
 					<div class="input-block"><label>NAME</label> <input type="text" name="addName" /></div>
 					<div class="input-block add-btn"><input type="submit" value="회원가입" /></div>
 				</div>

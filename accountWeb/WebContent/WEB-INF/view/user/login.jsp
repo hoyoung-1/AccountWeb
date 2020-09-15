@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,12 @@
 <body>
 
 	<jsp:include page="/WEB-INF/view/header.jsp"/>
+	<c:if test="${flag }">
+		<script>
+			alert("회원 가입되셨습니다. 로그인 해주세요.");
+		</script>
+	
+	</c:if>
 
 
 	<main role="main">

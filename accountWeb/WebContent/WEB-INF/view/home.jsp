@@ -7,11 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>-- Account Web --</title>
-<link rel="stylesheet" href="/resouces/css/home.css" />
+<link rel="stylesheet" type="text/css" href="/resouces/css/home.css" />
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/header.jsp"/>	
-
 
 	<main role="main">
 		<div class="content-container">
