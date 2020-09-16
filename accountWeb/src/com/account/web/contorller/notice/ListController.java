@@ -21,10 +21,17 @@ public class ListController extends HttpServlet{
 		
 		NoticeService service = new NoticeService();
 		
-		List<Notice> list = service.getList();
+		String page_ = request.getParameter("p");
+		int page = 1;
+		
+		if(page_ != null ) {
+			page = Integer.parseInt(page_);
+		}
+		
+		List<Notice> list = service.getList(page);
 		request.setAttribute("list", list);
 		
-		int count = list.size();
+		int count = service.listCount();
 		request.setAttribute("count", count);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/notice/list.jsp");
