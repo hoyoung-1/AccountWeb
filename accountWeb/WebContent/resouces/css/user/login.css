@@ -24,6 +24,10 @@ input[type=text] {
 	width: 180px;
 }
 
+innput[type=password] {
+	width: 180px;
+}
+
 .login-button-block {
 	display: flex;
 	flex-direction: column;
