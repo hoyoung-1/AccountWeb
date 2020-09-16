@@ -33,7 +33,7 @@
 
 		<nav>
 			<div class="nav-list">
-				<a href="account">가계부</a> <a href="notice">공지사항</a> <a href="tip">팁
+				<a href="/account/list">가계부</a> <a href="/notice/list">공지사항</a> <a href="/tip/list">팁
 					게시판</a>
 			</div>
 		</nav>
