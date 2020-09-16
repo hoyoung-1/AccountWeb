@@ -37,14 +37,11 @@ public class LoginController extends HttpServlet {
 		
 		Users user = service.login(id, pw);
 		
-		System.out.println("controller : " + user);
-		
 		session.setAttribute("user", user);
 		
 		
 		if(user != null) {
-			dispatcher = request.getRequestDispatcher("/WEB-INF/view/home.jsp");
-			dispatcher.forward(request, response);
+			response.sendRedirect("/home");
 		} else {
 			boolean error = true;
 			request.setAttribute("error", error);

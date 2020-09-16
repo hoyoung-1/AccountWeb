@@ -8,6 +8,11 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.account.web.entity.Users;
 
 @WebFilter("/*")
 public class AccountFilter implements Filter {
@@ -19,10 +24,10 @@ public class AccountFilter implements Filter {
 		request.setCharacterEncoding("UTF-8");
 		
 		response.setCharacterEncoding("UTF-8");
-		//response.setContentType("text/html; charset=utf-8");
 
-		chain.doFilter(request, response);
+		
 	
+		chain.doFilter(request, response);
 	}
 
 	

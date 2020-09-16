@@ -22,6 +22,13 @@
 		</script>
 	
 	</c:if>
+	
+	<c:if test="${not empty user }">
+		<script>
+			alert("접근할 수 없습니다.");
+			location.href="/home";
+		</script>
+	</c:if>
 
 
 	<main role="main">
@@ -33,7 +40,7 @@
 					<label>id</label><input type="text" name="id" />
 				</div>
 				<div class="login-input-block">
-					<label>pw</label><input type="text" name="pw" />
+					<label>pw</label><input type="password" name="pw" />
 				</div>
 
 				<div class="login-button-block">

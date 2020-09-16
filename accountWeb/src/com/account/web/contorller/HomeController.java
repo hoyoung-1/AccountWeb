@@ -15,19 +15,19 @@ public class HomeController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/home.jsp");
 		dispatcher.forward(request, response);
-
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+		HttpSession session = req.getSession();
 		
 		session.invalidate();
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/view/home.jsp");
-		dispatcher.forward(request, response);
+		
+		resp.sendRedirect("/home");
 	}
+	
+	
 }
