@@ -56,6 +56,11 @@ public class NoticeService {
 				list.add(notice);
 			}
 
+			
+			rs.close();
+			ps.close();
+			con.close();
+			
 		} catch (ClassNotFoundException e) {
 			System.out.println("driver 에러");
 			e.printStackTrace();
@@ -63,9 +68,14 @@ public class NoticeService {
 			System.out.println("sql 에러");
 			e.printStackTrace();
 		}
+		
+	
+		
+		
 		return list;
 	}
 	
+	// 공지사항의 총 갯수
 	public int listCount () {
 		
 		int count = 0;
@@ -84,9 +94,10 @@ public class NoticeService {
 			if(rs.next()) {
 				count = rs.getInt("count(*)");
 			}
-		
 			
-		
+			rs.close();
+			st.close();
+			con.close();
 
 		} catch (ClassNotFoundException e) {
 			System.out.println("driver 에러");
@@ -98,5 +109,46 @@ public class NoticeService {
 		return count;
 	}
 	
+	
+	// 세부 내용을 가져오는 메소드
+	public Notice detail(int noticeNo) {
+		Notice notice = null;
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(URL,ID,PW);
+			
+			String sql = "SELECT * FROM notice where notice_no=?";
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, noticeNo);
+
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				int getNoticeNo = rs.getInt("notice_no");
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				String writer = rs.getString("writer");
+				Date regdate = rs.getDate("regdate");
+				notice = new Notice(getNoticeNo, title, content, writer, regdate);
+			}
+
+			rs.close();
+			ps.close();
+			con.close();
+		} catch (ClassNotFoundException e) {
+			System.out.println("driver 에러");
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println("sql 에러");
+			e.printStackTrace();
+		}
+		
+		
+		
+		return notice;
+	}
 	
 }

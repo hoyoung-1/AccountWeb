@@ -7,66 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>-- 공지사항 --</title>
-<style>
-.list-container {
-	width: 80%;
-	margin: auto;
-}
-
-.list-title {
-	font-size: 50px;
-	color: rgb(40, 120, 40);
-	padding: 20px;
-}
-
-table {
-	margin: 10px auto !important;
-	width: 90%;
-	border: 2px solid rgb(40, 120, 40) !important;
-	text-align: center;
-}
-
-tr {
-	cursor: pointer;
-}
-
-tr:hover {
-	color: rgb(40, 120, 40);
-}
-
-th {
-	padding: 10px !important;
-	border: 2px solid !important;
-	background: rgb(40, 220, 40) !important;
-}
-
-td {
-	padding: 10px !important;
-	border: 0.5px solid !important;
-}
-
-.page-info {
-	position: absolute;
-	right: 18%;
-	width: 6%;
-	border: 1px solid;
-	padding: 5px;
-	text-align: center;
-}
-
-.page-list {
-	margin: 50px auto;
-	width: 20%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-}
-
-.green-bold{
-	color: rgb(40,220,40);
-	font-weight: bold;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="/resouces/css/notice/list.css" />
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/header.jsp" />
@@ -85,7 +26,7 @@ td {
 					<tbody>
 						<c:forEach items="${list }" var="notice" begin="0" end="9">
 							<tr
-								onclick="location.href='/notice/detail?id=${notice.noticeNo}'">
+								onclick="location.href='/notice/detail?noticeNo=${notice.noticeNo}'">
 								<td>${notice.noticeNo }</td>
 								<td>${notice.title }</td>
 								<td>${notice.writer }</td>

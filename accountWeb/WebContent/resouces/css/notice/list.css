@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+.list-container {
+	width: 80%;
+	margin: auto;
+}
+
+.list-title {
+	font-size: 50px;
+	color: rgb(40, 120, 40);
+	padding: 20px;
+}
+
+table {
+	margin: 10px auto !important;
+	width: 90%;
+	border: 2px solid rgb(40, 120, 40) !important;
+	text-align: center;
+}
+
+tr {
+	cursor: pointer;
+}
+
+tr:hover {
+	color: rgb(40, 120, 40);
+}
+
+th {
+	padding: 10px !important;
+	border: 2px solid !important;
+	background: rgb(40, 220, 40) !important;
+}
+
+td {
+	padding: 10px !important;
+	border: 0.5px solid !important;
+}
+
+.page-info {
+	position: absolute;
+	right: 18%;
+	width: 6%;
+	border: 1px solid;
+	padding: 5px;
+	text-align: center;
+}
+
+.page-list {
+	margin: 50px auto;
+	width: 20%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.green-bold {
+	color: rgb(40, 220, 40);
+	font-weight: bold;
+}

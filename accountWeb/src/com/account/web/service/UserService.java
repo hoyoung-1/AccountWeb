@@ -37,8 +37,12 @@ public class UserService {
 			if(result_==1) {
 				result = true;
 			}
+			
+			ps.close();
+			con.close();
 		
 			return result;
+			
 			
 		} catch (ClassNotFoundException e) {
 			System.out.println("driver 에러");
@@ -81,6 +85,10 @@ public class UserService {
 				
 				System.out.println(user);
 			}
+			
+			rs.close();
+			ps.close();
+			con.close();
 	
 			
 		} catch (ClassNotFoundException e) {
