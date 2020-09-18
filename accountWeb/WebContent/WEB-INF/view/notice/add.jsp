@@ -59,7 +59,11 @@ input[type=text]:focus{
 		location.href="/home";
 	</script>
 </c:if>
-
+<c:if test="${not empty error }">
+	<script>
+		alert("입력에 실패하였습니다.");
+	</script>
+</c:if>
 
 
 	<jsp:include page="/WEB-INF/view/header.jsp" />

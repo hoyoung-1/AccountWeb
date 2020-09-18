@@ -37,8 +37,11 @@ public class AddNoticeController extends HttpServlet{
 			System.out.println("입력성공");
 			response.sendRedirect("/notice/list");
 		}else { // 입력실패
+			boolean error = true;
+			request.setAttribute("error", error);
 			System.out.println("입력실패");
-			response.sendRedirect("/notice/add");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/notice/add.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 }
