@@ -150,5 +150,41 @@ public class NoticeService {
 		
 		return notice;
 	}
+
+	public boolean insert(String title, String content) {
+		
+		boolean flag = false;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(URL,ID,PW);
+			
+			String sql = "INSERT INTO notice(notice_no,title,content,writer)"
+					+ " VALUES (seq_notice.nextval,?,?,'관리자')";
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, title);
+			ps.setString(2, content);
+			
+			int flag_ = ps.executeUpdate();
+			
+			if(flag_ > 0) {
+				flag = true;
+			}
+			
+			ps.close();
+			con.close();
+			
+
+		} catch (ClassNotFoundException e) {
+			System.out.println("driver 에러");
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println("sql 에러");
+			e.printStackTrace();
+		}
+	
+		return flag;
+	}
+	
 	
 }

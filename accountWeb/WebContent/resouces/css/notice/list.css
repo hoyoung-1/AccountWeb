@@ -58,3 +58,10 @@ td {
 	color: rgb(40, 220, 40);
 	font-weight: bold;
 }
+
+.add-btn {
+	border: 1px solid;
+    width: 30%;
+    text-align: center;
+    padding: 5px;	
+}

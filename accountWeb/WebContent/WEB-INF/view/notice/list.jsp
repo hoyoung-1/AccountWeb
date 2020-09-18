@@ -68,8 +68,15 @@
 						<a href="" onclick="alert('다음페이지가 존재하지 않습니다.')">다음</a>
 						</c:if>
 					</div>
+					
 
 				</div>
+				
+					<div class="add-btn">
+						<c:if test="${user.id == 'kpw521' }">
+						<a href="/notice/add">공지사항 등록하기</a>
+						</c:if>
+					</div>
 
 			</div>
 		</div>

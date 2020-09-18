@@ -22,6 +22,8 @@ public class Notice {
 		this.writer = writer;
 		this.regdate = regdate;
 	}
+	
+	
 
 	/**
 	 * @return the noticeNo

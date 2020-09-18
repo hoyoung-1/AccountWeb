@@ -5,49 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>-- 공지 등록 --</title>
-<style>
-.detail-container{
-	width: 80%;
-	margin: 50px auto;
-	
-}
-
-.detail-block {
-	border: 1px solid rgb(40,120,40);
-}
-
-.table-block {
-	margin: auto;
-	width: 100%;
-	text-align: center;
-}
-
-td{
-	padding: 10px !important;
-	border: 1px solid rgb(40,120,40) !important;
-}
-
-.content-area {
-	font-size: 30px;
-	padding: 30px;
-}
-
-.other-notice {
-	margin: 40px auto;
-	width: 100%;
-	border: 1px solid rgb(40,120,40);
-}
-
-.border-left{
-	border-left:1px solid rgb(40,120,40);
-	padding: 0px 10px; 
-}
-
-li{
-	padding: 10px !important;
-    border: 1px solid rgb(40,120,40) !important;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="/resouces/css/notice/detail.css" />
 </head>
 <body>
 
