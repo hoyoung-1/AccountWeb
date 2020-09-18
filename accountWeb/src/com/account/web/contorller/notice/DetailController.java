@@ -38,4 +38,27 @@ public class DetailController extends HttpServlet{
 		
 	}
 	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		NoticeService service = new NoticeService();
+		
+		String noticeNo_ = request.getParameter("noticeNo");
+		System.out.println(noticeNo_);
+		int noticeNo = 0;
+		
+		if(noticeNo_ !=null) {
+			noticeNo = Integer.parseInt(noticeNo_);
+		}
+		
+		boolean flag = service.delete(noticeNo);
+		
+		if(flag) {
+			System.out.println("삭제 성공");
+			response.sendRedirect("/notice/list");
+		}else {
+			System.out.println("삭제 실패");
+			response.sendRedirect("/notice/detail?noticeNo="+noticeNo);
+		}
+	}
+	
 }

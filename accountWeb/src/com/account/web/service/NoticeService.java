@@ -185,6 +185,40 @@ public class NoticeService {
 	
 		return flag;
 	}
+
+	public boolean delete(int noticeNo) {
+		
+		boolean flag = false;
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(URL,ID,PW);
+			
+			String sql = "delete from notice where notice_no=?";
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, noticeNo);
+			
+			int flag_ = ps.executeUpdate();
+			
+			if(flag_ > 0) {
+				flag = true;
+			}
+			
+			ps.close();
+			con.close();
+			
+
+		} catch (ClassNotFoundException e) {
+			System.out.println("driver 에러");
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println("sql 에러");
+			e.printStackTrace();
+		}
+		
+		return flag;
+	}
 	
 	
 }
