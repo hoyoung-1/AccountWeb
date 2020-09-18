@@ -38,8 +38,8 @@
 			
 			<div class="other-notice">
 				<ul>
-					<li>이전 글 <span class="border-left">안녕하세요</span></li>
-					<li>다음 글 <span class="border-left">안녕히가세요</span></li>
+					<li>이전 글 <span class="border-left"><a href="/notice/detail?noticeNo=${prevNotice.noticeNo }"> ${prevNotice.title }</a></span></li>
+					<li>다음 글 <span class="border-left"><a href="/notice/detail?noticeNo=${nextNotice.noticeNo }"> ${nextNotice.title }</a></span></li>
 				</ul>
 			</div>
 			<c:if test="${user.id eq 'kpw521' }">

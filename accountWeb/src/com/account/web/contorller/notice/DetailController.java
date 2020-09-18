@@ -28,9 +28,14 @@ public class DetailController extends HttpServlet{
 		
 		NoticeService service = new NoticeService();
 		
-		Notice notice = service.detail(noticeNo);
+		Notice notice = service.detail(noticeNo); // 지금 게시물
+		
+		Notice prevNotice = service.getPrev(noticeNo);
+		Notice nextNotice = service.getNext(noticeNo);
 		
 		request.setAttribute("notice", notice);
+		request.setAttribute("prevNotice", prevNotice);
+		request.setAttribute("nextNotice", nextNotice);
 		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/notice/detail.jsp");

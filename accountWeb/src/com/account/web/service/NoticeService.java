@@ -145,9 +145,7 @@ public class NoticeService {
 			System.out.println("sql 에러");
 			e.printStackTrace();
 		}
-		
-		
-		
+
 		return notice;
 	}
 
@@ -218,6 +216,100 @@ public class NoticeService {
 		}
 		
 		return flag;
+	}
+
+	public Notice getPrev(int noticeNo) { // 이전 게시물
+		Notice notice = null;
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(URL,ID,PW);
+			
+			String sql = "SELECT n.*, rownum " + 
+					"FROM (" + 
+					"    select * " + 
+					"    from notice " + 
+					"    order by regdate desc" + 
+					") n " + 
+					"where notice_no < ? and rownum =1";
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, noticeNo);
+
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				int getNoticeNo = rs.getInt("notice_no");
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				String writer = rs.getString("writer");
+				Date regdate = rs.getDate("regdate");
+				notice = new Notice(getNoticeNo, title, content, writer, regdate);
+			}
+
+			rs.close();
+			ps.close();
+			con.close();
+		} catch (ClassNotFoundException e) {
+			System.out.println("driver 에러");
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println("sql 에러");
+			e.printStackTrace();
+		}
+		
+		
+		
+		return notice;
+	}
+
+	public Notice getNext(int noticeNo) {
+		
+		
+		Notice notice = null;
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(URL,ID,PW);
+			
+			String sql = "select rownum, n.* from notice n" + 
+					"	where regdate > (" + 
+					"    select regdate" + 
+					"    from notice" + 
+					"    where notice_no = ?" + 
+					") and rownum = 1";
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, noticeNo);
+
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				int getNoticeNo = rs.getInt("notice_no");
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				String writer = rs.getString("writer");
+				Date regdate = rs.getDate("regdate");
+				notice = new Notice(getNoticeNo, title, content, writer, regdate);
+			}
+
+			rs.close();
+			ps.close();
+			con.close();
+			
+		} catch (ClassNotFoundException e) {
+			System.out.println("driver 에러");
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println("sql 에러");
+			e.printStackTrace();
+		}
+		
+		
+		
+		return notice;
 	}
 	
 	
