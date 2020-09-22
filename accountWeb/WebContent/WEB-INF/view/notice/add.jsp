@@ -6,51 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>-- 등록 --</title>
-<style>
-.add-container {
-	width: 80%;
-	margin: auto;
-}
 
-.table-block {
-	width: 100%;
-	margin: auto;
-	text-align: center;
-}
+<link rel="stylesheet" href="/resouces/css/notie/add.css" />
+<!-- summer note api -->
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-#noticeContent {
-	resize: none;
-	width: 100%;
-	height: 500px;
-	border: none;
-}
-
-#noticeContent:focus {
-	outline: none;
-}
-
-tr {
-	border: 1px solid !important;
-}
-
-td {
-	padding: 10px !important;
-}
-
-input[type=text] {
-	width: 100%;
-	border: none;
-	font-size: 20px;
-}
-
-input[type=text]:focus{
-
-	outline: none;
-}
-
-
-
-</style>
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
 <body>
 <c:if test="${empty user }">
@@ -87,7 +53,7 @@ input[type=text]:focus{
 						</tr>
 						<tr>
 							<td colspan="2">
-							<textarea name="content" id="noticeContent" cols="30" rows="10"></textarea></td>
+							<textarea name="content" id="summernote" class='summernote' cols="30" rows="10"></textarea></td>
 						</tr>
 					</tbody>
 				</table>
@@ -99,6 +65,12 @@ input[type=text]:focus{
 
 	<jsp:include page="/WEB-INF/view/footer.jsp" />
 
+<script>
+	$('#summernote').summernote({
+		maxHeight: "500px",
+		minHeight: "500px",
+	});
+</script>
 
 </body>
 </html>

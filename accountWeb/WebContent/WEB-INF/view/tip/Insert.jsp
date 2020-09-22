@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,14 +24,27 @@
 .table-block{
 	margin: auto;
 	width: 100%;
+}
+
+.subtitle{
 	text-align: center;
 }
 
+tr{
+	margin: 10px 0px !important;
+}
 
 </style>
 
 </head>
 <body>
+<%-- 
+<c:if test='${empty user }'>
+	<script>
+		alert("잘못된 접근입니다.");
+		location.href="/home";
+	</script>
+</c:if> --%>
 
 	<jsp:include page="/WEB-INF/view/header.jsp" />
 
@@ -40,15 +54,14 @@
 				<table class="table-block">
 					<tbody>
 						<tr>
-							<td>작성자</td>
-							<td><input type="text" disabled="disabled" name="writer"
-								value="${user.id }" /></td>
+							<td class="subtitle">작성자</td>
+							<td><input type="text" disabled="disabled" name="writer" value="${user.id }" /></td>
 						</tr>
 						<tr>
 							<td colspan="2">
 						</tr>
 						<tr>
-							<td>제목</td>
+							<td class="subtitle">제목</td>
 							<td><input type="text" name="title" /></td>
 						</tr>
 						<tr>
@@ -57,6 +70,7 @@
 						</tr>
 					</tbody>
 				</table>
+				<input type="hidden" name="userNo" value="${user.userNo }" />
 				<input type="submit" value="등록" />
 			</form>
 		</div>
@@ -71,7 +85,8 @@
 
 	$('#summernote').summernote({
 		minHeight: "500px",
-		maxHeight: "500px"
+		maxHeight: "500px",
+		placeholder: "자신만의 팁을 올려주세요 !"
 	});
 	
 </script>

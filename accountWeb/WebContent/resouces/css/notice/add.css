@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+.add-container {
+	width: 80%;
+	margin: auto;
+}
+
+.table-block {
+	width: 100%;
+	margin: auto;
+	text-align: center;
+}
+
+#noticeContent {
+	resize: none;
+	width: 100%;
+	height: 500px;
+	border: none;
+}
+
+#noticeContent:focus {
+	outline: none;
+}
+
+tr {
+	border: 1px solid !important;
+}
+
+td {
+	padding: 10px !important;
+}
+
+input[type=text] {
+	width: 100%;
+	border: none;
+	font-size: 20px;
+}
+
+input[type=text]:focus {
+	outline: none;
+}

@@ -18,4 +18,22 @@ public class InsertController extends HttpServlet{
 		
 		dispatcher.forward(request, response);
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String userNo_ = request.getParameter("userNo");
+		int userNo = 0;
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		
+		
+		if(userNo_ != null ) {
+			userNo = Integer.parseInt(userNo_);
+		}
+		System.out.println("user 고유 번호 : " + userNo);
+		
+		
+		
+	}
 }
