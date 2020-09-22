@@ -9,6 +9,7 @@ public class TipService {
 	// list를 출력
 	public List<Tip> getList(){
 		
+		
 		return null;
 	}
 }
