@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/resouces/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="/resouces/css/header.css" />
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
 
@@ -41,7 +42,7 @@
 	</header>
 	
 	<script>
-	
+
 	function logout() {
 		alert("로그아웃 되었습니다.");
 		
