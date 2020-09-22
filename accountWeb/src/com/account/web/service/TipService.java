@@ -2,6 +2,7 @@ package com.account.web.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -50,7 +51,7 @@ public class TipService {
 		return list;
 	}
 	
-	public boolean insert(int userNo,String title,String content) {
+	public boolean insert(int userNo,String title,String content,String writer) {
 		
 		boolean flag = false;
 		
@@ -59,11 +60,21 @@ public class TipService {
 			
 			Connection con = DriverManager.getConnection(URL,ID,PW);
 			
-			String sql = "";
+			String sql = "insert into tip(user_no,tip_no,title,content,writer)" + 
+					"values (?,seq_tip.nextval,?,?,?)";
 			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, userNo);
+			ps.setString(2, title);
+			ps.setString(3, content);
+			ps.setString(4, writer);
 			
+			int result = ps.executeUpdate();
 			
-			
+			if(result > 0) {
+				flag = true;
+			}
+					
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

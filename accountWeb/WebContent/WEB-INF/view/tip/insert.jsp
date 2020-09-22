@@ -71,6 +71,7 @@ tr{
 					</tbody>
 				</table>
 				<input type="hidden" name="userNo" value="${user.userNo }" />
+				<input type="hidden" name="writer"  value="${user.id }"/>
 				<input type="submit" value="등록" />
 			</form>
 		</div>
