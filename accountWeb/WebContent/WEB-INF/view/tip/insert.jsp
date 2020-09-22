@@ -38,13 +38,13 @@ tr{
 
 </head>
 <body>
-<%-- 
+
 <c:if test='${empty user }'>
 	<script>
 		alert("잘못된 접근입니다.");
 		location.href="/home";
 	</script>
-</c:if> --%>
+</c:if>
 
 	<jsp:include page="/WEB-INF/view/header.jsp" />
 
