@@ -16,6 +16,15 @@ public class Tip {
 		
 	}
 	
+	public Tip(int tipId, String title, String content, String writer, Date regdate) {
+		super();
+		this.tipId = tipId;
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+		this.regdate = regdate;
+	}
+	
 
 	public Tip(int userId, int tipId, String title, String content, String writer, Date regdate, int hit) {
 		super();

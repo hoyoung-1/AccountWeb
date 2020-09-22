@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.account.web.entity.Tip;
@@ -33,7 +34,15 @@ public class TipService {
 			ResultSet rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
-			
+				int tipId = rs.getInt("tip_no");
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				String writer = rs.getString("writer");
+				Date regdate = rs.getDate("regdate");
+				
+				Tip tip = new Tip(tipId, title, content, writer, regdate);
+				list.add(tip);
+						
 			}
 
 			
@@ -50,6 +59,7 @@ public class TipService {
 		}
 		return list;
 	}
+	
 	
 	public boolean insert(int userNo,String title,String content,String writer) {
 		

@@ -6,6 +6,40 @@
 <head>
 <meta charset="UTF-8">
 <title>-- tip 게시판 --</title>
+<style>
+.board-container {
+	margin: auto;
+	width: 80%;
+}
+
+.board-block{
+	margin: 30px 0px;
+}
+
+.table-block {
+	margin: auto;
+	width: 100%;
+	text-align: center;
+	border: 1px solid;
+}
+
+.board-page {
+	display: flex;
+    justify-content: space-around;
+    width: 20%;
+    margin: auto;
+}
+
+tr > th {
+	background: rgb(40,220,40);
+	padding: 10px 0px;
+	border: 2px solid;
+}
+
+tr > td {
+	border: 1px solid;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/header.jsp" />
@@ -21,7 +55,7 @@
 			</div>
 
 			<div class="board-block">
-				<table>
+				<table class="table-block">
 					<tr>
 						<th>번호</th>
 						<th>제목</th>
@@ -30,15 +64,25 @@
 						<th>좋아요</th>
 					</tr>
 					<tbody>
-						<!-- forEach문으로 데이터 가져오기  -->
+						<c:forEach var="tip" items="${tip }" begin="0" end="9">
+						<tr>
+							<td>${tip.tipId }</td>
+							<td>${tip.title }</td>
+							<td>${tip.writer }</td>
+							<td>${tip.regdate }</td>
+							<td>4</td>
+						</tr>						
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
 
 			<div class="board-page">
-				<c:forEach var="i" begin="0" end="5">
+				<a href="/tip/board?p=4">이전</a>
+				<c:forEach var="i" begin="0" end="4">
 					<ul><li>${i+1 }</li></ul>
 				</c:forEach>
+				<a href="">다음</a>
 			</div>
 
 		</div>
