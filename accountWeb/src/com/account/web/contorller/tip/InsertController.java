@@ -14,7 +14,7 @@ public class InsertController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tip/insert.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tip/Insert.jsp");
 		
 		dispatcher.forward(request, response);
 	}
