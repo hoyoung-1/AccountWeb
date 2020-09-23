@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.account.web.entity.Tip;
+import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
 
 public class TipService {
 	
@@ -96,6 +97,39 @@ public class TipService {
 		
 		
 		return flag;
+		
+	}
+	
+	public int count() {
+		int cnt =0;
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			
+			Connection con = DriverManager.getConnection(URL,ID,PW);
+			
+			String sql = "SELECT COUNT(*) cnt FROM tip";
+			
+			Statement st = con.createStatement();
+			
+			ResultSet rs = st.executeQuery(sql);
+			
+			if(rs.next()) {
+				cnt = rs.getInt("cnt");
+			}
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return cnt;
 		
 	}
 }

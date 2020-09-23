@@ -1,44 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>-- tip 게시판 --</title>
+<link rel="stylesheet" href="/resouces/css/tip/board.css" />
 <style>
-.board-container {
-	margin: auto;
-	width: 80%;
+.green {
+	color: rgb(40,120,40);
+	font-weight: bold;
 }
 
-.board-block{
-	margin: 30px 0px;
-}
 
-.table-block {
-	margin: auto;
-	width: 100%;
-	text-align: center;
-	border: 1px solid;
-}
-
-.board-page {
-	display: flex;
-    justify-content: space-around;
-    width: 20%;
-    margin: auto;
-}
-
-tr > th {
-	background: rgb(40,220,40);
-	padding: 10px 0px;
-	border: 2px solid;
-}
-
-tr > td {
-	border: 1px solid;
-}
 </style>
 </head>
 <body>
@@ -50,41 +26,69 @@ tr > td {
 			<div class="board-title">Tip 공유 게시글</div>
 
 			<div class='board-event-block'>
-				<p>공유하고 싶은 tip이 있다면 글을 올려주세요!
-					 좋아요가 많은 게시글에는 상품을 드립니다!</p>
+				<p>
+					공유하고 싶은 tip이 있다면 글을 올려주세요! <br /> <span class="red">좋아요</span>가 많은
+					게시글에는 상품을 드립니다!
+				</p>
+			</div>
+
+			<div class="select-block">
+				<form action="/tip/board" method="post">
+					<select name="select">
+						<option value="title">제목</option>
+						<option value="writer">작성자</option>
+					</select> 
+					<input type="text" name="answer" placeholder="검색" /> 
+					<input type="submit" value="검색" />
+				</form>
 			</div>
 
 			<div class="board-block">
 				<table class="table-block">
 					<tr>
-						<th>번호</th>
+						<th class="table-th-1">번호</th>
 						<th>제목</th>
-						<th>작성자</th>
-						<th>작성일</th>
-						<th>좋아요</th>
+						<th class="table-th-2">작성자</th>
+						<th class="table-th-3">작성일</th>
+						<th class="table-th-4">좋아요</th>
 					</tr>
+
+					<c:set var="page" value="${empty param.p ? 1:param.p }" />
+					<c:set var="startNum" value="${page-(page-1)%5 }" />
+					<fmt:parseNumber var="lastNum" value="${cnt%10 == 0 ? cnt/10 : cnt/10+1}" integerOnly="true" />
+					
+
 					<tbody>
 						<c:forEach var="tip" items="${tip }" begin="0" end="9">
-						<tr>
-							<td>${tip.tipId }</td>
-							<td>${tip.title }</td>
-							<td>${tip.writer }</td>
-							<td>${tip.regdate }</td>
-							<td>4</td>
-						</tr>						
+							<tr>
+								<td>${tip.tipId }</td>
+								<td class="table-td-title">${tip.title }</td>
+								<td>${tip.writer }</td>
+								<td>${tip.regdate }</td>
+								<td>4</td>
+							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 			</div>
 
 			<div class="board-page">
+				<c:if test="${startNum >1 }">
 				<a href="/tip/board?p=4">이전</a>
-				<c:forEach var="i" begin="0" end="4">
-					<ul><li>${i+1 }</li></ul>
+				</c:if>
+				<c:forEach var="pageNum" begin="0" end="4">
+					<ul>
+						<c:if test="${lastNum >= startNum+pageNum }">
+						<li><a class="${page eq (startNum+pageNum) ? 'green' :' ' }" href="/tip/board?p=${startNum+pageNum }">${startNum+pageNum }</a></li>
+						</c:if>
+					</ul>
 				</c:forEach>
+				<c:if test="${lastNum > 5 }">
 				<a href="">다음</a>
+				</c:if>
 			</div>
 
+		<div class="test"> 테스트 구역  ${page } / ${lastNum } / ${startNum }</div>
 		</div>
 
 	</main>

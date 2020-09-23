@@ -22,10 +22,25 @@ public class BoardController extends HttpServlet{
 		TipService service = new TipService();
 		
 		List<Tip> tip = service.getList();
+		int cnt = service.count();
 		
 		request.setAttribute("tip", tip);
+		request.setAttribute("cnt", cnt);
+		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tip/board.jsp");
 		dispatcher.forward(request, response);
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String select = request.getParameter("select");
+		String answer = request.getParameter("answer");
+		
+		System.out.println("select : "+ select  );
+		System.out.println("answer : " + answer );
+		
+	}
+
 }
