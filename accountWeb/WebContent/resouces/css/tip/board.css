@@ -80,3 +80,16 @@ tr>td {
 li {
 	margin: 0 10px;
 }
+
+.green {
+	color: rgb(40, 120, 40);
+	font-weight: bold;
+}
+
+.tr-location {
+	cursor: pointer;
+}
+
+.tr-location:hover {
+	color: rgb(40,120,40);
+}

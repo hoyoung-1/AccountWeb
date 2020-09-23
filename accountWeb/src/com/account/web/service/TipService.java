@@ -20,19 +20,32 @@ public class TipService {
 	private final String PW = "account";
 	
 	// list를 출력
-	public List<Tip> getList(){
+	public List<Tip> getList(int page){
 		List<Tip> list = new ArrayList<Tip>();
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(URL,ID,PW);
 			
-			String sql = "select * from tip";
-
-			Statement st = con.createStatement();
-	
+			String sql = "select * " + 
+					"from( " + 
+					"select rownum num, a.* " + 
+					"from ( " + 
+					"    select * " + 
+					"    from tip " + 
+					"    order by regdate desc " + 
+					"    ) a " + 
+					") " + 
+					"where num BETWEEN ? and ?";
 			
-			ResultSet rs = st.executeQuery(sql);
+			int start = 1 + (page-1)*10;
+			int end = page * 10;
+
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, start);
+			ps.setInt(2, end);
+			
+			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				int tipId = rs.getInt("tip_no");
@@ -43,19 +56,18 @@ public class TipService {
 				
 				Tip tip = new Tip(tipId, title, content, writer, regdate);
 				list.add(tip);
-						
 			}
 
 			
 			rs.close();
-			st.close();
+			ps.close();
 			con.close();
 			
 		} catch (ClassNotFoundException e) {
 			System.out.println("driver 에러");
 			e.printStackTrace();
 		} catch (SQLException e) {
-			System.out.println("sql 에러");
+			System.out.println("sql 에러 : getList()");
 			e.printStackTrace();
 		}
 		return list;
@@ -86,6 +98,8 @@ public class TipService {
 				flag = true;
 			}
 					
+			ps.close();
+			con.close();
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -132,4 +146,5 @@ public class TipService {
 		return cnt;
 		
 	}
+
 }

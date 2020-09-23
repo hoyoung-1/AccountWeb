@@ -7,15 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>-- tip 게시판 --</title>
-<link rel="stylesheet" href="/resouces/css/tip/board.css" />
-<style>
-.green {
-	color: rgb(40,120,40);
-	font-weight: bold;
-}
-
-
-</style>
+<link rel="stylesheet" href="/resouces/css/tip/board.css?after" />
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/header.jsp" />
@@ -60,7 +52,7 @@
 
 					<tbody>
 						<c:forEach var="tip" items="${tip }" begin="0" end="9">
-							<tr>
+							<tr class="tr-location" onclick="location.href='/tip/content?tipId=${tip.tipId}'">
 								<td>${tip.tipId }</td>
 								<td class="table-td-title">${tip.title }</td>
 								<td>${tip.writer }</td>
@@ -72,6 +64,8 @@
 				</table>
 			</div>
 
+			<div class="page-info"> ${page } / ${lastNum }</div>
+			
 			<div class="board-page">
 				<c:if test="${startNum >1 }">
 				<a href="/tip/board?p=4">이전</a>
@@ -88,7 +82,6 @@
 				</c:if>
 			</div>
 
-		<div class="test"> 테스트 구역  ${page } / ${lastNum } / ${startNum }</div>
 		</div>
 
 	</main>

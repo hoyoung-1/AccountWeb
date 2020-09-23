@@ -21,7 +21,14 @@ public class BoardController extends HttpServlet{
 		
 		TipService service = new TipService();
 		
-		List<Tip> tip = service.getList();
+		String page_ = request.getParameter("p");
+		int page = 1; // 페이징 기본값
+		
+		if(page_ != null) {
+			page = Integer.parseInt(page_);
+		}
+		
+		List<Tip> tip = service.getList(page);
 		int cnt = service.count();
 		
 		request.setAttribute("tip", tip);
